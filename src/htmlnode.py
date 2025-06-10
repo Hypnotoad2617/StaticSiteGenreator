@@ -35,13 +35,7 @@ class LeafNode(HTMLNode):
 
     def __repr__(self):
         return f"LeafNode({self.tag}, {self.value}, {self.props})"
-        
-        #else:
-            #match tag:
-                #case "p":
-                    #return f"<p>{self.value}</p>"
-                #case "a":
-                    #return f"<a {self.props.props_to_html()}>{self.value}</a>"
+
 
 
 class ParentNode(HTMLNode):

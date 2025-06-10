@@ -93,19 +93,19 @@ def extract_markdown_links(text):
     return matches
 
 
-def text_to_testnodes(text):
-    print(text)
+def text_to_textnodes(text):
+    #print(text)
     nodes = [TextNode(text,TextType.TEXT)]
-    print(nodes)
+    #print(nodes)
     nodes = split_nodes_delimiter(nodes,"__",TextType.ITALIC)
     nodes = split_nodes_delimiter(nodes,"_",TextType.ITALIC)
-    print(nodes)
+    #print(nodes)
     nodes = split_nodes_delimiter(nodes,"**",TextType.BOLD)
-    print(nodes)
+    #print(nodes)
     nodes = split_nodes_delimiter(nodes,"`",TextType.CODE)
-    print(nodes)
+    #print(nodes)
     nodes = split_nodes_image(nodes)
-    print(nodes)
+    #print(nodes)
     nodes = split_nodes_link(nodes)
-    print(nodes)
+    #print(nodes)
     return nodes
