@@ -1,34 +1,23 @@
-from textnode import *
-from htmlnode import *
-from inline_markdown import *
-from markdown_blocks import *
-from markdown2html import *
-import re
+import os
+import shutil
+
+from copystatic import copy_files_recursive
+from gencontent import generate_page, generate_page_recursive
+
+dir_path_static = "./static"
+dir_path_public = "./public"
+dir_path_content = "./content"
+template_path = "./template.html"
+
 
 def main():
-    md = """
-```
-This is text that _should_ remain
-the **same** even with inline stuff
-```
-"""
-    blocks = markdown_to_blocks(md)
-    block1 = blocks[0]
+    print("Deleting public directory...")
+    if os.path.exists(dir_path_public):
+        shutil.rmtree(dir_path_public)
 
-    #print(text_to_textnodes(block1))
+    print("Copying static files to public directory...")
+    copy_files_recursive(dir_path_static, dir_path_public)
 
-    test = markdown_to_html_node(md)
-    print(test)
-
-    '''
-    paragraph block to multiple text nodes, textnodes into html
-    text_to_textnodes(text)
-    '''
-    # create a text_to_children(): function
-
-    return
-
-
-
+    generate_page_recursive(dir_path_content, template_path, dir_path_public)
 
 main()
