@@ -1,1 +1,1 @@
- python3 src/main.py "/Hypnotoad2617/"
+ python3 src/main.py "/StaticSiteGenreator/"
